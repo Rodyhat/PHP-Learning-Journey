@@ -1,5 +1,5 @@
 <?php
-// object
+// object = are data type that allows one to group properties and method in one entity
 // class is a template for objects, and an object is an instance of a class
 // ways to declare or create an object(clas,stdClass)
 // public , private and protected
@@ -83,4 +83,61 @@ $schools -> sch1 = 'LAUTECH';
 echo $schools -> sch1;
 echo "<br>";
 
+
+// new 
+class food{
+    public $rice;
+    public $color;
+}
+
+$general = new food();
+$general -> rice = "food1";
+echo $general -> rice;
+echo "<br>";
+$general -> color ="yellow";
+echo $general -> color;
+echo "<br>";
+
+$general2 = new stdClass();
+$general2 -> color = "blue";
+echo $general2 -> color ;
+echo "<br>";
+
+
+// object are data type that allow one to group method and properties on one entity
+// method are functions while properties/attribute are the variable declared
+
+class det1 {
+    public $laptop;
+    public $color;
+}
+$gende1 = new det1();
+$gende1 -> laptop = "DELL";
+echo $gende1 -> laptop;
+echo "<br>";
+
+$gende2 = new stdClass();
+$gende2 -> colors = "green";
+echo $gende2 -> colors;
+
+echo "<br>";
+
+function car4($s = 4){
+    echo $s;
+}
+car4();
+echo "<br>";
+
+function add($x, $y){
+    $z = $x + $y;
+    return $z;
+}
+echo add(3,4);
+echo "<br>";
+
+function subtract($m , $n){
+    $o = $m - $n;
+    return $o;
+}
+echo subtract(7, 6);
 ?>

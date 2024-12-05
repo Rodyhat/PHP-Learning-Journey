@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: blueviolet;
+}
+
+.all {
+  background-color: white;
+  border-radius: 15px;
+  padding: 15px 25px 25px;
+  width: 340px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+h1 {
+  text-align: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+input {
+  width: 100%;
+  height: 30px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  background-color: rgba(128, 128, 128, 0.215);
+  color: rgba(0, 0, 0, 0.604);
+}
+
+input[type="submit"] {
+  background-color: blueviolet;
+  color: white;
+  font-size: 15px;
+}
+
+input[type="file"] {
+  background-color: transparent;
+}

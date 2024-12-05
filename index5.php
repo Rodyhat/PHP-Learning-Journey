@@ -90,6 +90,23 @@ scope2();
 echo "<br>";
 
 
+// new
+function food(){
+    echo "hello world";
+}
+food();
+echo "<br>";
+
+function food2($name1){
+echo $name1;
+}
+food2("rice");
+
+function food3(){
+    
+}
+
+echo "<br>";
 
 
 // CHALLENGE
