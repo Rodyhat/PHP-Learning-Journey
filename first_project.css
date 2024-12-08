@@ -10,7 +10,7 @@ body {
   align-items: center;
   width: 100%;
   height: 100vh;
-  background-color: blueviolet;
+  background-color: #5650aa;
 }
 
 .all {
@@ -33,7 +33,16 @@ h1 {
 a{
     text-decoration: none;
 }
+.error{
+  color: red;
+  text-align: center;
+}
 
+#image{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
 input {
   width: 100%;
   height: 30px;
@@ -46,7 +55,7 @@ input {
 }
 
 input[type="submit"] {
-  background-color: blueviolet;
+  background-color: #5650aa;
   color: white;
   font-size: 15px;
 }
