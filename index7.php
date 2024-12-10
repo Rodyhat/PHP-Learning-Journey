@@ -17,20 +17,27 @@ if ($time < 12) {
 } else {
     echo "Go and sleep";
 }
-
+echo "<br>";
+-
 // if elseif else statement = execute different code for more than two conditions
-$grade = 45;
-if ($grade <= 70 && $grade <= 100) {
+$grade = 36;
+if ($grade >= 70 && $grade <= 100) {
     echo "A";
-} elseif ($grade <= 60 && $grade <= 69) {
+} elseif ($grade >= 60 && $grade <= 69) {
     echo "B";
-} elseif ($grade <= 50 && $grade <= 59) {
+} elseif ($grade >= 50 && $grade <= 59) {
     echo "C";
-} elseif ($grade <= 49 && $grade <= 45) {
+} elseif ($grade >= 45 && $grade <= 49) {
     echo "D";
-} elseif ($grade <= 40 && $grade <= 44) {
+} elseif ($grade >= 40 && $grade <= 44) {
     echo "E";
+} elseif ($grade >= 0 && $grade <= 39) {
+    echo "F";
+} else {
+    echo "You failed wolefully";
 }
+echo "<br>";
+
 
 $traffic = "red";
 switch ($traffic) {
@@ -46,6 +53,8 @@ switch ($traffic) {
     default:
         echo "You do not have a traffic light";
         break;
-}
+};
+echo "<br>";
+
 
 ?>
