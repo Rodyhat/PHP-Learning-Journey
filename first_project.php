@@ -72,27 +72,27 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="regdate input">
                 <input type="date" name="regdate" id="" placeholder="Enter your registration date">
-                <p class="error"> <?php echo $error;?></p>
+                <p class="error"> <?php echo $error; ?></p>
 
             </div>
             <div class="countryandcity input">
                 <input type="text" name="countryandcity" id="" placeholder="Enter your country and city">
-                <p class="error"> <?php echo $error;?></p>
+                <p class="error"> <?php echo $error; ?></p>
 
             </div>
             <div class="number input">
                 <input type="number" name="phonenumber" id="" placeholder="Enter your phone number">
-                <p class="error"> <?php echo $error;?></p>
+                <p class="error"> <?php echo $error; ?></p>
 
             </div>
             <div class="birthdate input">
                 <input type="date" name="birthdate" id="" placeholder="Enter your date of birth">
-                <p class="error"> <?php echo $error;?></p>
+                <p class="error"> <?php echo $error; ?></p>
 
             </div>
             <div class="password input">
                 <input type="password" name="password" id="" placeholder="Enter your password">
-                <p class="error"> <?php echo $error;?></p>
+                <p class="error"> <?php echo $error; ?></p>
 
             </div>
             <div class="image">
