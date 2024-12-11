@@ -115,4 +115,25 @@ do {
     }
     $i++;
 } while ($i <= 10);
-echo "The sum of all even numbers from 1 to 10 is ". $result;
+echo "The sum of all even numbers from 1 to 10 is " . $result;
+echo "<br>";
+
+$i = 3;
+$factorial = 1;
+while ($i > 0) {
+    $result = $factorial *= $i;
+    $i--;
+}
+echo $result;
+echo "<br>";
+
+$i = 1;
+$sum = 0;
+do {
+    if($i % 2 == 0){
+        $result = $sum += $i;
+    }
+    $i++;
+} while ($i <= 10);
+
+echo $result;
