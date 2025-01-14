@@ -1,6 +1,6 @@
 <?php
 include("connect.php");
-$error = '';
+$error1 = $error2 = $error3 = $error4 = $error5 = $error6 = $error7 = $error8 = '';
 if (isset($_POST['submit'])) {
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
@@ -12,21 +12,21 @@ if (isset($_POST['submit'])) {
     $_image = $_FILES['image']['name'];
     $tmp_image = $_FILES['image']['tmp_name'];
     if (empty($fullname) && empty($email) && empty($regdate) && empty($countryandcity) && empty($phonenumber) && empty($_birthdate) && empty($password) && empty($_image)) {
-        $error = "All field required";
+        $error1 = "All field required";
     } elseif (empty($fullname)) {
-        $error = "Enter your full name";
+        $error2 = "Enter your full name";
     } elseif (empty($email)) {
-        $error = "Enter your Email";
+        $error3 = "Enter your Email";
     } elseif (empty($regdate)) {
-        $error = "Enter your registration date";
+        $error4 = "Enter your registration date";
     } elseif (empty($countryandcity)) {
-        $error = "Enter your country and city";
+        $error5 = "Enter your country and city";
     } elseif (empty($phonenumber)) {
-        $error = "Enter your phone number";
+        $error6 = "Enter your phone number";
     } elseif (empty($_birthdate)) {
-        $error = "Enter your birth date";
+        $error7 = "Enter your birth date";
     } elseif (empty($password)) {
-        $error = "Enter your password";
+        $error8 = "Enter your password";
     } else {
 
         $select = "SELECT * FROM `studentsignup` WHERE email = '$email'";
@@ -60,39 +60,41 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="all">
         <form action="" method="POST" class="form" enctype="multipart/form-data">
+        <p class="error"> <?php echo $error1 ?></p>
+
             <h1>Student Sign Up</h1>
             <div class="fullname input">
                 <input type="text" name="fullname" id="" placeholder="Enter your fullname">
-                <p class="error"> <?php echo $error; ?></p>
+                <p class="error"> <?php echo $error2; ?></p>
             </div>
             <div class="email input">
                 <input type="email" name="email" id="" placeholder="Enter your email">
-                <p class="error"> <?php echo $error; ?></p>
+                <p class="error"> <?php echo $error3; ?></p>
 
             </div>
             <div class="regdate input">
                 <input type="date" name="regdate" id="" placeholder="Enter your registration date">
-                <p class="error"> <?php echo $error; ?></p>
+                <p class="error"> <?php echo $error4; ?></p>
 
             </div>
             <div class="countryandcity input">
                 <input type="text" name="countryandcity" id="" placeholder="Enter your country and city">
-                <p class="error"> <?php echo $error; ?></p>
+                <p class="error"> <?php echo $error5; ?></p>
 
             </div>
             <div class="number input">
                 <input type="number" name="phonenumber" id="" placeholder="Enter your phone number">
-                <p class="error"> <?php echo $error; ?></p>
+                <p class="error"> <?php echo $error6; ?></p>
 
             </div>
             <div class="birthdate input">
                 <input type="date" name="birthdate" id="" placeholder="Enter your date of birth">
-                <p class="error"> <?php echo $error; ?></p>
+                <p class="error"> <?php echo $error7; ?></p>
 
             </div>
             <div class="password input">
                 <input type="password" name="password" id="" placeholder="Enter your password">
-                <p class="error"> <?php echo $error; ?></p>
+                <p class="error"> <?php echo $error8; ?></p>
 
             </div>
             <div class="image">

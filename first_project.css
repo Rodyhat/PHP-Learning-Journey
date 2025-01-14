@@ -35,7 +35,6 @@ a {
 }
 .error {
   color: red;
-  text-align: center;
 }
 
 #image {
@@ -63,4 +62,3 @@ input[type="submit"] {
 input[type="file"] {
   background-color: transparent;
 }
-

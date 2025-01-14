@@ -1,6 +1,5 @@
 <?php
 $numbers = array(11,12,34,54);
-
 // sort in an array = it sort an array in ascending order
 sort($numbers);
 print_r($numbers);
@@ -22,6 +21,7 @@ $details = array(
     'food' => 'Beans and plantain',
     'school' => "LAUTECH"
 );
+
 // asort - it sort an associative array in ascending order according to the value
 asort($details);
 print_r($details);
@@ -89,6 +89,4 @@ echo "<br>";
 echo $gradebook['Jane'];
 echo "<br>";
 echo $gradebook['Doe'];
-
-
 ?>

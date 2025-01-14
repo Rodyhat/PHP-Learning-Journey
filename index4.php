@@ -74,70 +74,74 @@ $nicon->email = 'Brown';
 echo $nicon->email;
 echo "<br>";
 
-$nicon -> food = 'Beans and plantain';
+$nicon->food = 'Beans and plantain';
 echo $nicon->food;
 echo "<br>";
 
 $schools = new stdClass();
-$schools -> sch1 = 'LAUTECH';
-echo $schools -> sch1;
+$schools->sch1 = 'LAUTECH';
+echo $schools->sch1;
 echo "<br>";
 
 
 // new 
-class food{
+class food
+{
     public $rice;
     public $color;
 }
 
 $general = new food();
-$general -> rice = "food1";
-echo $general -> rice;
+$general->rice = "food1";
+echo $general->rice;
 echo "<br>";
-$general -> color ="yellow";
-echo $general -> color;
+$general->color = "yellow";
+echo $general->color;
 echo "<br>";
 
 $general2 = new stdClass();
-$general2 -> color = "blue";
-echo $general2 -> color ;
+$general2->color = "blue";
+echo $general2->color;
 echo "<br>";
 
 
 // object are data type that allow one to group method and properties on one entity
 // method are functions while properties/attribute are the variable declared
 
-class det1 {
+class det1
+{
     public $laptop;
     public $color;
 }
 $gende1 = new det1();
-$gende1 -> laptop = "DELL";
-echo $gende1 -> laptop;
+$gende1->laptop = "DELL";
+echo $gende1->laptop;
 echo "<br>";
 
 $gende2 = new stdClass();
-$gende2 -> colors = "green";
-echo $gende2 -> colors;
+$gende2->colors = "green";
+echo $gende2->colors;
 
 echo "<br>";
 
-function car4($s = 4){
+function car4($s = 4)
+{
     echo $s;
 }
 car4();
 echo "<br>";
 
-function add($x, $y){
+function add($x, $y)
+{
     $z = $x + $y;
     return $z;
 }
-echo add(3,4);
+echo add(3, 4);
 echo "<br>";
 
-function subtract($m , $n){
+function subtract($m, $n)
+{
     $o = $m - $n;
     return $o;
 }
 echo subtract(7, 6);
-?>
