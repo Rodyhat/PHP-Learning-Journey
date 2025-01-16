@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbox</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    /* style.css */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .chat-container {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chat-box {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        max-height: 300px;
+        overflow-y: auto;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .chat-box div {
+        margin: 5px 0;
+    }
+
+    .chat-box .sender {
+        text-align: left;
+        color: #333;
+    }
+
+    .chat-box .receiver {
+        text-align: right;
+        color: #007bff;
+    }
+
+    #message-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+
+    #send-btn {
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #send-btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<body>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box"></div>
+        <input type="text" id="message-input" placeholder="Type a message" />
+        <button id="send-btn">Send</button>
+    </div>
+
+    <script>
+        // app.js
+        document.getElementById("send-btn").addEventListener("click", function () {
+            // Get the input message value
+            const messageInput = document.getElementById("message-input");
+            const message = messageInput.value.trim();
+
+            // If the message is not empty, send it
+            if (message !== "") {
+                // Create a new message element
+                const messageElement = document.createElement("div");
+                messageElement.classList.add("sender");
+                messageElement.textContent = message;
+
+                // Append the message to the chat-box
+                const chatBox = document.getElementById("chat-box");
+                chatBox.appendChild(messageElement);
+
+                // Clear the input field
+                messageInput.value = "";
+
+                // Scroll to the bottom of the chat box
+                chatBox.scrollTop = chatBox.scrollHeight;
+
+                // Simulate receiving a reply (for demo purposes)
+                setTimeout(function () {
+                    const replyElement = document.createElement("div");
+                    replyElement.classList.add("receiver");
+                    replyElement.textContent = "Reply from Receiver: " + message;
+                    chatBox.appendChild(replyElement);
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }, 1000);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
