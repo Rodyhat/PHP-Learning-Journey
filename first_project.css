@@ -11,6 +11,8 @@ body {
   width: 100%;
   height: 100vh;
   background-color: #5650aa;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
 }
 
 .all {
@@ -24,6 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border: 1px solid #000;
 }
 
 h1 {
@@ -54,9 +57,13 @@ input {
 }
 
 input[type="submit"] {
-  background-color: #5650aa;
+  /* background-color: #5650aa; */
   color: white;
   font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
 }
 
 input[type="file"] {
