@@ -206,7 +206,7 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
       </div>
       <div class="email input">
         <input type="number" name="phonenumber" id="" placeholder="Enter your phone number">
-
+ 
       </div>
       <div class="password input">
         <input type="password" name="password" id="" placeholder="Enter your password">
