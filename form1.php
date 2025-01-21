@@ -13,45 +13,29 @@
 
 // / Get is used to collect or retrieve data, the URL is vosible to the everyone, it us suitable for retrieving non-sensitive data such as the search queries
 // POST is used to send data, the URL is invisible, it is suitable for sensitive data such as password
-
-
 // isset function = it checks if a variable is set and not null, it checks whether a varibles exist before performing the operation
-
 // htmlspecialchars = they are usefull for preventing cross-site scripting attack, they are used to convert special charaters into HTML entities ensuring that data is safe to display in the browser
 
 $errors = []; // Initialize an empty array to store error messages
 
 if (isset($_POST['submit'])) {
   $firstname = htmlspecialchars($_POST['firstname']);
-  echo $firstname;
+  // echo $firstname;
   echo "<br>";
   $lastname = $_POST['lastname'];
-  echo $lastname;
+  // echo $lastname;
   echo "<br>";
 
   $email = $_POST['email'];
-  echo $email;
+  // echo $email;
   echo "<br>";
 
   $phoneNumber = $_POST['phonenumber'];
-  echo $phoneNumber;
+  // echo $phoneNumber;
   echo "<br>";
 
   $password = $_POST['password'];
-  echo $password;
-
-  // if (empty($firstname) && empty($lastname) && empty($email) && empty($phoneNumber) && empty($password)) {
-  //   echo "Enter all the form";
-  // } elseif (empty($firstname)) {
-  //   echo "ENTER YOUR FIRST NAME";
-  // } elseif (empty($lastname)) {
-  //   echo "ENTER YOUR LAST NAME";
-  // } elseif (empty($email)) {
-  //   echo "ENTER YOUR EMAIL";
-  // } elseif (empty($phoneNumber)) {
-  //   echo "ENTER YOUR PHONE NUMBER";
-  // }
-
+  // echo $password;
 
   // Check each field and add an error message if it's empty
   if (empty($firstname)) {
@@ -70,31 +54,20 @@ if (isset($_POST['submit'])) {
     $errors['password'] = "Please enter your password.";
   }
 
-  if (!empty($errors)) {
-    foreach ($errors as $field => $message) {
-      echo "<p>$message</p>";
-    }
-  } else {
-    echo "form successfully submitted";
-  }
+  
 
   // If there are errors, display them under each input field
-  // if (!empty($errors)) {
-  //   foreach ($errors as $field => $message) {
-  //     echo "<p style='color: red;'>{$message}</p>";
-  //   }
-  // } else {
-  //   echo "Form submitted successfully!";
-  // }
+  if (empty($errors)) {
+   echo "form successfully submitted";
 }
-
-// filter_var - they are used to validate and sanitize data
-$email = 'isiaqrodiat@gmail.com';
-if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  echo "The email is valid";
-} else {
-  echo "the email is invalid";
 }
+// // filter_var - they are used to validate and sanitize data
+// $email = 'isiaqrodiat@gmail.com';
+// if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+//   echo "The email is valid";
+// } else {
+//   echo "the email is invalid";
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -194,22 +167,25 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
       <h1> Sign Up</h1>
       <div class="fullname input">
         <input type="text" name="firstname" id="" placeholder="Enter your first name">
-        <!-- <div class="error"></div> -->
+        <div class="error"><?php echo isset($errors['firstname']) ? $errors['firstname'] : '';?></div>
+      
       </div>
       <div class="fullname input">
         <input type="text" name="lastname" id="" placeholder="Enter your last name">
-
+        <div class="error"><?php echo isset($errors['lastname']) ? $errors['lastname'] : '';?></div>
+      
       </div>
       <div class="email input">
         <input type="email" name="email" id="" placeholder="Enter your email">
-
+        <div class="error"><?php echo isset($errors['email']) ? $errors['email'] : '';?></div>
       </div>
       <div class="email input">
         <input type="number" name="phonenumber" id="" placeholder="Enter your phone number">
- 
+    <div class="error"><?php echo isset($errors['phonenumber']) ? $errors['phonenumber'] : '';?></div>
       </div>
       <div class="password input">
         <input type="password" name="password" id="" placeholder="Enter your password">
+        <div class="error"><?php echo isset($errors['password']) ? $errors['password'] : '';?></div>
 
       </div>
       <button type="submit" name="submit">Sign up</button>

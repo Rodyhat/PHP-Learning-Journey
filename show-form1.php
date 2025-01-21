@@ -13,13 +13,13 @@
 
 // / Get is used to collect or retrieve data, the URL is vosible to the everyone, it us suitable for retrieving non-sensitive data such as the search queries
 // POST is used to send data, the URL is invisible, it is suitable for sensitive data such as password
-
-
 // isset function = it checks if a variable is set and not null, it checks whether a varibles exist before performing the operation
+// htmlspecialchars = they are usefull for preventing cross-site scripting attack, they are used to convert special charaters into HTML entities ensuring that data is safe to display in the browser
+
 $errors = []; // Initialize an empty array to store error messages
 
 if (isset($_POST['submit'])) {
-  $firstname = $_POST['firstname'];
+  $firstname = htmlspecialchars($_POST['firstname']);
   echo $firstname;
   echo "<br>";
   $lastname = $_POST['lastname'];
@@ -35,20 +35,7 @@ if (isset($_POST['submit'])) {
   echo "<br>";
 
   $password = $_POST['password'];
-  echo $password;
-
-  // if (empty($firstname) && empty($lastname) && empty($email) && empty($phoneNumber) && empty($password)) {
-  //   echo "Enter all the form";
-  // } elseif (empty($firstname)) {
-  //   echo "ENTER YOUR FIRST NAME";
-  // } elseif (empty($lastname)) {
-  //   echo "ENTER YOUR LAST NAME";
-  // } elseif (empty($email)) {
-  //   echo "ENTER YOUR EMAIL";
-  // } elseif (empty($phoneNumber)) {
-  //   echo "ENTER YOUR PHONE NUMBER";
-  // }
-
+  // echo $password;
 
   // Check each field and add an error message if it's empty
   if (empty($firstname)) {
@@ -67,34 +54,18 @@ if (isset($_POST['submit'])) {
     $errors['password'] = "Please enter your password.";
   }
 
-  if (!empty($errors)) {
-    foreach ($errors as $field => $message) {
-      echo "<p>$message</p>";
-    }
-  } else {
-    echo "form successfully submitted";
-  }
+  
 
   // If there are errors, display them under each input field
-  // if (!empty($errors)) {
-  //   foreach ($errors as $field => $message) {
-  //     echo "<p style='color: red;'>{$message}</p>";
-  //   }
-  // } else {
-  //   echo "Form submitted successfully!";
-  // }
+  if (empty($errors)) {
+   echo "form successfully submitted";
 }
-
+}
+// // filter_var - they are used to validate and sanitize data
+// $email = 'isiaqrodiat@gmail.com';
+// if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+//   echo "The email is valid";
+// } else {
+//   echo "the email is invalid";
+// }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
