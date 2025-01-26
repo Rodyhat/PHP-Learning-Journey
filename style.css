@@ -1,0 +1,80 @@
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+  }
+
+  .error{
+    color: red;
+  }
+
+  .all {
+    background-color: white;
+    border-radius: 15px;
+    padding: 15px 25px 25px;
+    width: 340px;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .error {
+    color: red;
+  }
+
+  #image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+
+  input {
+    width: 100%;
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: rgba(128, 128, 128, 0.215);
+    color: rgba(0, 0, 0, 0.604);
+  }
+
+  button {
+    background-color: #5650aa;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 15px;
+    padding: 6px;
+  }
+
+  input[type="file"] {
+    background-color: transparent;
+  }
+
+  .log p {
+    text-align: center;
+  }
