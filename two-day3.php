@@ -79,10 +79,18 @@ if (isset($_POST['submit'])) {
         $error['password'] = "Enter your password";
     }
 
-    if (empty($error)) {;
-        $insert = "INSERT INTO `form1`(`firstname`, `lastname`, `email`, `phonenumber`, `dateofbirth`, `password`) VALUES ('$firstname','$lastname','$email','$phonenumber','$dateofbirth','$password')";
-        $insertQuery = mysqli_query($connect, $insert);
-        echo "successfully inserted";
+    if (empty($error)) {
+        $select = "SELECT * FROM `form1` WHERE email = '$email'";
+        $selectQuery = mysqli_query($connect, $select);
+        $result = mysqli_fetch_assoc($selectQuery);
+        if ($result > 0) {
+            echo "EMAIL ALREAY EXIST";
+        } else {
+            $insert = "INSERT INTO `form1`(`firstname`, `lastname`, `email`, `phonenumber`, `dateofbirth`, `password`) VALUES ('$firstname','$lastname','$email','$phonenumber','$dateofbirth','$password')";
+            $insertQuery = mysqli_query($connect, $insert);
+            echo "successfully inserted";
+            header('location: three-day1.php');
+        }
     }
 }
 
