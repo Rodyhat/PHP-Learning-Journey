@@ -29,32 +29,11 @@ if (isset($_POST['submit'])) {
     // echo $dateofbirth;
     echo "<br>";
 
+    $image = $_FILES['image'][''];
+    $tmp_image = $_FILES['image'];
+
     $password = htmlspecialchars($_POST['password']);
     // echo $password;
-
-
-    // if (empty($firstname) || empty($lastname) || empty($email) || empty($phonenumber) || empty($dateofbirth) || empty($password)) {
-    //     echo "<div style='color:red;'>ALL FIELD REQUIRED</div>";
-    // } 
-
-    // if (empty($firstname) && empty($lastname) && empty($email) && empty($phonenumber) && empty($dateofbirth) && empty($password)) {
-    //     echo "<div style='color:red;'>ALL FIELD REQUIRED</div>";
-    // } elseif (empty($firstname)) {
-    //     echo "<div style='color:red;'>ENTER YOUR FIRST NAME</div>";
-    // } elseif (empty($lastname)) {
-    //     echo "<div style='color:red;'>ENTER YOUR LAST NAME</div>";
-    // } elseif (empty($email)) {
-    //     echo "<div style='color:red;'>ENTER YOUR EMAIL</div>";
-    // } elseif (empty($phonenumber)) {
-    //     echo "<div style='color:red;'>ENTER YOUR PHONE NUMBER</div>";
-    // } elseif (empty($dateofbirth)) {
-    //     echo "<div style='color:red;'>ENTER YOUR DATE OF BIRTH</div>";
-    // } elseif (empty($password)) {
-    //     echo "<div style='color:red;'>ENTER YOUR PASSWORD</div>";
-    // } else {
-    //     echo "FORM SUCESSFULLY SUBMITTED";
-    // }
-
 
     if (empty($firstname) && empty($lastname) && empty($email) && empty($phonenumber) && empty($dateofbirth) && empty($password)) {
         echo "<div style='color:red;'>All field required</div>";
@@ -82,14 +61,14 @@ if (isset($_POST['submit'])) {
     if (empty($error)) {
         $select = "SELECT * FROM `form1` WHERE email = '$email'";
         $selectQuery = mysqli_query($connect, $select);
-        $result = mysqli_fetch_assoc($selectQuery);
+        $result = mysqli_num_rows($selectQuery);
         if ($result > 0) {
-            echo "EMAIL ALREAY EXIST";
+            echo "EMAIL ALREADY EXIST";
         } else {
             $insert = "INSERT INTO `form1`(`firstname`, `lastname`, `email`, `phonenumber`, `dateofbirth`, `password`) VALUES ('$firstname','$lastname','$email','$phonenumber','$dateofbirth','$password')";
             $insertQuery = mysqli_query($connect, $insert);
             echo "successfully inserted";
-            header('location: three-day1.php');
+            header('location: day4-login.php');
         }
     }
 }
@@ -139,7 +118,9 @@ if (isset($_POST['submit'])) {
             <div class="password input">
                 <input type="password" id="" name="password" placeholder="Enter your password">
                 <div class="error"><?php echo isset($error['password']) ? $error['password'] : ''; ?></div>
-
+            </div>
+            <div class='file'>
+                <input type="file" name="image" id="" >
             </div>
             <button type="submit" name="submit">Sign up</button>
             <div class="log">

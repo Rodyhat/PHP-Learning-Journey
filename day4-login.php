@@ -8,52 +8,30 @@
 // POST is used to send data to the server, the URL is invisible to the user
 // isset it used to check if a variable exist before perfoeming the operation
 // $error = $error1 = $error2 = $error3 = $error4 = $error5 = $error6 = '';
+session_start();
+include 'connect1.php';
 $error = [];
 if (isset($_POST['submit'])) {
-    $firstname = htmlspecialchars($_POST['firstname']);
-    // echo $firstname;
-    echo "<br>";
-    $lastname = htmlspecialchars($_POST['lastname']);
-    // echo $lastname;
-    echo "<br>";
-
     $email = htmlspecialchars($_POST['email']);
     // echo $email;
     echo "<br>";
-
-    $phonenumber = htmlspecialchars($_POST['phonenumber']);
-    // echo $phonenumber;
-    echo "<br>";
-
-    $dateofbirth = htmlspecialchars($_POST['dateofbirth']);
-    // echo $dateofbirth;
-    echo "<br>";
-
     $password = htmlspecialchars($_POST['password']);
-    // echo $password;
-    if (empty($firstname)) {
-        $error['firstname'] = "ENTER YOUR FIRST NAME";
-    }
-    if (empty($lastname)) {
-        $error['lastname'] = "ENTER YOUR LAST NAME";
-    }
+
     if (empty($email)) {
         $error['email'] = "ENTER YOUR EMAIL";
     }
-    if (empty($phonenumber)) {
-        $error['phonenumber'] = "ENTER YOUR PHONE NUMBER";
-    }
-    if (empty($dateofbirth)) {
-        $error['dateofbirth'] = "ENTER YOUR DATE OF BIRTH";
-    }
+
     if (empty($password)) {
         $error['password'] = "ENTER YOUR PASSWORD";
     }
 
     if (empty($error)) {
-        $insert = "INSERT INTO `form1`(`firstname`, `lastname`, `email`, `phonenumber`, `dateofbirth`, `password`) VALUES ('$firstname','$lastname','$email','$phonenumber','$dateofbirth','$password')";
-        $insertQuery = mysqli_query($connect, $insert);
-        echo "form successfully submitted";
+        $select = "SELECT * FROM `form1` WHERE email = '$email' AND password = '$password'";
+        $selectQuery = mysqli_query($connect, $select);
+        $fetch = mysqli_fetch_assoc($selectQuery);
+        $_SESSION['email'] = $fetch['email'];
+        $_SESSION['password'] = $fetch['password'];
+        header('location: dashboard2.php');
     }
 }
 ?>
