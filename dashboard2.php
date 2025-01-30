@@ -1,13 +1,15 @@
 <?php
+
 session_start();
 if (!isset($_SESSION['email'])) {
     header('location: day4-login.php');
+    exit();
 }
 
 include 'connect1.php';
 $email = $_SESSION['email'];
 
-$select = "SELECT * FROM `form1` WHERE email = '$email'";
+$select = "SELECT * FROM `form1` WHERE email = '$email' ";
 $selectQuery = mysqli_query($connect, $select);
 $fetch = mysqli_fetch_assoc($selectQuery);
 ?>
@@ -27,6 +29,7 @@ $fetch = mysqli_fetch_assoc($selectQuery);
     <h1><?php echo $fetch['email']; ?></h1>
     <h1><?php echo $fetch['dateofbirth']; ?></h1>
     <h1><?php echo $fetch['phonenumber']; ?></h1>
+    <img src="upload/<?php echo htmlspecialchars($fetch['image']); ?>" alt="">
 </body>
 
 </html>

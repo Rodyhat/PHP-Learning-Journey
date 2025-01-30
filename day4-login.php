@@ -8,6 +8,10 @@
 // POST is used to send data to the server, the URL is invisible to the user
 // isset it used to check if a variable exist before perfoeming the operation
 // $error = $error1 = $error2 = $error3 = $error4 = $error5 = $error6 = '';
+
+// session is used to store information across multiple pages for a single user, it is stored on the server, making it more secure, it is commonly used for user authenticatiton and preserving user data across web pages
+// header = header is used to redirect the user to another page
+ini_set('session.gc_maxlifetime', 60); // Set session timeout to 1 minutes
 session_start();
 include 'connect1.php';
 $error = [];
@@ -26,12 +30,26 @@ if (isset($_POST['submit'])) {
     }
 
     if (empty($error)) {
-        $select = "SELECT * FROM `form1` WHERE email = '$email' AND password = '$password'";
+        $select = "SELECT * FROM `form1` WHERE email = '$email'";
         $selectQuery = mysqli_query($connect, $select);
-        $fetch = mysqli_fetch_assoc($selectQuery);
-        $_SESSION['email'] = $fetch['email'];
-        $_SESSION['password'] = $fetch['password'];
-        header('location: dashboard2.php');
+        $result = mysqli_num_rows($selectQuery);
+
+        if ($result > 0) {
+            $fetch = mysqli_fetch_assoc($selectQuery);
+            $hashedPassword = $fetch['password']; // Get hashed password from DB
+
+            // ✅ Verify entered password with stored hash
+            if (password_verify($password, $hashedPassword)) {
+                $_SESSION['email'] = $fetch['email'];
+                echo "<div style='color:green;'>Login successful!</div>";
+                header('location: dashboard2.php');
+                exit();
+            } else {
+                echo "<div style='color:red;'>Invalid password</div>";
+            }
+        } else {
+            echo "<div style='color:red;'>INVALID DETAILS</div>";
+        }
     }
 }
 ?>

@@ -29,13 +29,13 @@ if (isset($_POST['submit'])) {
     // echo $dateofbirth;
     echo "<br>";
 
-    $image = $_FILES['image'][''];
-    $tmp_image = $_FILES['image'];
+    $image = $_FILES['image']['name'];
+    $tmp_image = $_FILES['image']['tmp_name'];
 
-    $password = htmlspecialchars($_POST['password']);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     // echo $password;
 
-    if (empty($firstname) && empty($lastname) && empty($email) && empty($phonenumber) && empty($dateofbirth) && empty($password)) {
+    if (empty($firstname) && empty($lastname) && empty($email) && empty($phonenumber) && empty($dateofbirth) && empty($image) && empty($password)) {
         echo "<div style='color:red;'>All field required</div>";
     }
 
@@ -57,6 +57,9 @@ if (isset($_POST['submit'])) {
     if (empty($password)) {
         $error['password'] = "Enter your password";
     }
+    if (empty($image)) {
+        $error['image'] = "Enter your image";
+    }
 
     if (empty($error)) {
         $select = "SELECT * FROM `form1` WHERE email = '$email'";
@@ -65,10 +68,16 @@ if (isset($_POST['submit'])) {
         if ($result > 0) {
             echo "EMAIL ALREADY EXIST";
         } else {
-            $insert = "INSERT INTO `form1`(`firstname`, `lastname`, `email`, `phonenumber`, `dateofbirth`, `password`) VALUES ('$firstname','$lastname','$email','$phonenumber','$dateofbirth','$password')";
-            $insertQuery = mysqli_query($connect, $insert);
-            echo "successfully inserted";
-            header('location: day4-login.php');
+            $upload = 'upload/' . $image;
+            if (move_uploaded_file($tmp_image, $upload)) {
+                // It ensures that even if a hacker gains access to the database, they cannot easily retrieve the original password.
+                // It automatically chooses the best encryption algorithm available in PHP
+
+                $insert = "INSERT INTO `form1`(`firstname`, `lastname`, `email`, `phonenumber`, `dateofbirth`, `password`, `image`) VALUES ('$firstname','$lastname','$email','$phonenumber','$dateofbirth','$password', '$image')";
+                $insertQuery = mysqli_query($connect, $insert);
+                echo "successfully inserted";
+                header('location: day4-login.php');
+            }
         }
     }
 }
@@ -88,7 +97,7 @@ if (isset($_POST['submit'])) {
 
 <body>
     <div class="all">
-        <form action="" class="form" method="POST">
+        <form action="" class="form" method="POST" enctype="multipart/form-data">
             <h1> Sign Up</h1>
             <div class="fullname input">
                 <input type="text" id="" name="firstname" placeholder="Enter your first name">
@@ -120,7 +129,7 @@ if (isset($_POST['submit'])) {
                 <div class="error"><?php echo isset($error['password']) ? $error['password'] : ''; ?></div>
             </div>
             <div class='file'>
-                <input type="file" name="image" id="" >
+                <input type="file" name="image" id="">
             </div>
             <button type="submit" name="submit">Sign up</button>
             <div class="log">
