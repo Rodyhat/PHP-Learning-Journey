@@ -69,6 +69,7 @@ if (isset($_POST['submit'])) {
             echo "EMAIL ALREADY EXIST";
         } else {
             $upload = 'upload/' . $image;
+            // move uploaded file , is going to move our file from a temporary location to a permanent location , it takes two parameters, (from and to)
             if (move_uploaded_file($tmp_image, $upload)) {
                 // It ensures that even if a hacker gains access to the database, they cannot easily retrieve the original password.
                 // It automatically chooses the best encryption algorithm available in PHP

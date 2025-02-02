@@ -30,7 +30,6 @@ $fetch = mysqli_fetch_assoc($selectQuery);
     }
 
     .enrol {
-        background-color: #5650aa;
         font-size: 13px;
     }
 
